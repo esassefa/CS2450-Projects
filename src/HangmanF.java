@@ -140,7 +140,37 @@ public class HangmanF extends javax.swing.JFrame {
         return score;
     }
     
-    
+    private void checkGameOver() {
+            if(present != true) {
+            score = score -10;
+            Score.setText(score + " pts");
+            if (score == 90) {
+                hangPic1.setVisible(true);
+            }
+            if (score == 80) {
+                hangPic2.setVisible(true);
+            }
+            if (score == 70) {
+                hangPic3.setVisible(true);
+            }
+            if (score == 60) {
+                hangPic4.setVisible(true);
+            }
+            if (score == 50) {
+                hangPic5.setVisible(true);
+            }
+            if (score == 40) {
+                hangPic6.setVisible(true);
+            }
+        }
+        
+        if(score <= 40) {
+            ButtonGame bg = new ButtonGame();
+            bg.setVisible(true);
+            this.setVisible(false);
+        }
+        present = false;
+    }
     
    // String choice = words[rand];
     /** This method is called from within the constructor to
@@ -496,39 +526,37 @@ public class HangmanF extends javax.swing.JFrame {
         hangLayered.setLayout(hangLayeredLayout);
         hangLayeredLayout.setHorizontalGroup(
             hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(hangLayeredLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hangLayeredLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(hangPic3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(hangPic2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(hangPic4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(hangLayeredLayout.createSequentialGroup()
+                .addGroup(hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hangLayeredLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
                         .addComponent(hangPic5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(hangPic6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67))
+                        .addComponent(hangPic6, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(hangLayeredLayout.createSequentialGroup()
-                        .addComponent(hangPic3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(hangLayeredLayout.createSequentialGroup()
-                                .addComponent(hangPic1)
-                                .addGap(9, 9, 9))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, hangLayeredLayout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(hangPic2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hangPic4)))))
-                .addContainerGap())
+                        .addGap(80, 80, 80)
+                        .addComponent(hangPic1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         hangLayeredLayout.setVerticalGroup(
             hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hangLayeredLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(hangPic1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(hangLayeredLayout.createSequentialGroup()
-                        .addComponent(hangPic1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(hangPic4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(hangLayeredLayout.createSequentialGroup()
-                        .addGap(111, 111, 111)
+                        .addGap(7, 7, 7)
                         .addGroup(hangLayeredLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(hangPic3)
                             .addComponent(hangPic2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -760,35 +788,7 @@ public class HangmanF extends javax.swing.JFrame {
                 
             } 
         }
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_FButtonActionPerformed
 
@@ -806,35 +806,7 @@ public class HangmanF extends javax.swing.JFrame {
                 
             }
         }
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }            
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_IButtonActionPerformed
 
@@ -853,35 +825,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }            
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_LButtonActionPerformed
 
@@ -900,35 +844,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_KButtonActionPerformed
 
@@ -947,36 +863,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_XButtonActionPerformed
 
@@ -995,35 +882,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_AButtonActionPerformed
 
@@ -1042,35 +901,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
     }//GEN-LAST:event_BButtonActionPerformed
 
     private void CButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CButtonActionPerformed
@@ -1088,35 +919,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_CButtonActionPerformed
 
@@ -1135,35 +938,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_DButtonActionPerformed
 
@@ -1182,35 +957,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
        
     }//GEN-LAST:event_EButtonActionPerformed
 
@@ -1229,35 +976,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score - 10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_GButtonActionPerformed
 
@@ -1276,35 +995,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_HButtonActionPerformed
 
@@ -1323,35 +1014,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_JButtonActionPerformed
 
@@ -1370,35 +1033,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_MButtonActionPerformed
 
@@ -1417,35 +1052,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_NButtonActionPerformed
 
@@ -1464,35 +1071,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_OButtonActionPerformed
 
@@ -1511,35 +1090,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
     }//GEN-LAST:event_PButtonActionPerformed
 
     private void QButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QButtonActionPerformed
@@ -1557,35 +1108,7 @@ public class HangmanF extends javax.swing.JFrame {
             
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_QButtonActionPerformed
 
@@ -1604,35 +1127,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_RButtonActionPerformed
 
@@ -1651,35 +1146,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_SButtonActionPerformed
 
@@ -1698,35 +1165,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_TButtonActionPerformed
 
@@ -1745,35 +1184,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_UButtonActionPerformed
 
@@ -1792,35 +1203,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_VButtonActionPerformed
 
@@ -1839,35 +1222,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_WButtonActionPerformed
 
@@ -1886,35 +1241,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-             if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
+        checkGameOver();
         
     }//GEN-LAST:event_YButtonActionPerformed
 
@@ -1933,36 +1260,7 @@ public class HangmanF extends javax.swing.JFrame {
             }
         }
         
-        if(present != true) {
-            score = score -10;
-            Score.setText(score + " pts");
-            if (score == 90) {
-                hangPic1.setVisible(true);
-            }
-            if (score == 80) {
-                hangPic2.setVisible(true);
-            }
-            if (score == 70) {
-                hangPic3.setVisible(true);
-            }
-            if (score == 60) {
-                hangPic4.setVisible(true);
-            }
-            if (score == 50) {
-                hangPic5.setVisible(true);
-            }
-            if (score == 40) {
-                hangPic6.setVisible(true);
-            }
-        }
-        
-        if(score <= 40) {
-            GameOverScreen gos = new GameOverScreen();
-            gos.setVisible(true);
-            this.setVisible(false);
-        }
-        present = false;
-        
+        checkGameOver();
     }//GEN-LAST:event_ZButtonActionPerformed
 
     private void SkipHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SkipHActionPerformed
@@ -1975,8 +1273,8 @@ public class HangmanF extends javax.swing.JFrame {
             tiles[i].setBackground(Color.BLACK);
         }
         skipWord();
-        GameOverScreen gos = new GameOverScreen();
-        gos.setVisible(true);
+        ButtonGame bg = new ButtonGame();
+        bg.setVisible(true);
         this.setVisible(false);
         
     }//GEN-LAST:event_SkipHActionPerformed
